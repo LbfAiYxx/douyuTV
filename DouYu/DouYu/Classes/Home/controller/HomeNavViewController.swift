@@ -7,9 +7,38 @@
 //
 
 import UIKit
-
+private let CtitleH = 40
 class HomeNavViewController:UIViewController {
-
+      //懒加载自定义标题栏
+    fileprivate lazy var titleView :PageTitleView = { [weak self] in        //定义frame
+        let titleFrame = CGRect.init(x: 0, y: CstatusBarH + CnavBarH, width: Int(CscreenW), height: CtitleH)
+        //定义标题
+        let titles = ["推荐","游戏","娱乐","趣玩"]
+        //调用构造函数创建
+        let titleView = PageTitleView.init(frame: titleFrame, titles: titles)
+        //设置控制器为代理
+        titleView.delegate = self
+        
+        return titleView
+        }()
+    
+    //懒加载自定义中间View
+    fileprivate lazy var contentView :PageContentView = { [weak self] in        //确定frame
+        let contentFrame = CGRect.init(x: 0, y:CGFloat(CstatusBarH + CnavBarH + CtitleH), width: CscreenW, height: CscreenH - CGFloat(CstatusBarH + CnavBarH + CtitleH ))
+        //确定子控制器组
+        var childVcs = [UIViewController]()
+        for i in 0..<4{
+            let childVc = UIViewController()
+            childVc.view.backgroundColor = UIColor.init(red:CGFloat(arc4random_uniform(255))/255.0, green: CGFloat(arc4random_uniform(255))/255.0, blue: CGFloat(arc4random_uniform(255))/255.0, alpha: 1) 
+            childVcs.append(childVc)
+        }
+        //创建自定义contentView
+        let contentView = PageContentView.init(frame: contentFrame, childVc: childVcs, parentcontroller: self)
+        //设置contentView代理
+        
+        contentView.delegate = self as contentViewDelegate?
+        return contentView
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,8 +55,16 @@ class HomeNavViewController:UIViewController {
 
 extension HomeNavViewController{
     fileprivate func setupUI(){
+        //不需要scrollView内边距
+        automaticallyAdjustsScrollViewInsets = false
         //设置导航栏
     setUpNavigationBar()
+        //设置标题栏
+        view.addSubview(titleView)
+        //设置中间视图
+        view.addSubview(contentView)
+        //contentView.backgroundColor = UIColor.orange
+        
     }
     private func setUpNavigationBar(){
         //设置左边item
@@ -50,5 +87,18 @@ extension HomeNavViewController{
         
         
         
+    }
+}
+
+extension HomeNavViewController : titleViewDelegate{
+    //遵守协议
+    func titleView( selectedIndex Index: Int) {
+       contentView.changeIndex(Index: Index)
+    }
+}
+
+extension HomeNavViewController :contentViewDelegate{
+    func contentView(progress: CGFloat, currentIndex: Int, oldIndex: Int) {
+        titleView.changeIndex(progress: progress, currentIndex: currentIndex, oldIndex: oldIndex)
     }
 }
