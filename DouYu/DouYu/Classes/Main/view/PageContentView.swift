@@ -127,25 +127,49 @@ extension PageContentView : UICollectionViewDelegate{
         }
         
         //右滑动，当每滑动一页时设置当前下标和原来小标
-       if (( oldOffsetX - currentOffsetX) / CscreenW == 1 ) ||
-            ((oldOffsetX - currentOffsetX) / CscreenW == 2 ) ||
-            ((oldOffsetX - currentOffsetX ) / CscreenW == 3 ) {
+        if (( oldOffsetX - currentOffsetX) / CscreenW == 1 ) {
             oldOffsetX = currentOffsetX
             currentIndeX = Int(oldOffsetX/CscreenW)
             if currentIndeX <= 2 {
                 oldIndeX = currentIndeX + 1
             }
-            
+        }else if ((oldOffsetX - currentOffsetX) / CscreenW == 2 ) {
+            oldOffsetX = currentOffsetX
+            currentIndeX = Int(oldOffsetX/CscreenW)
+            if currentIndeX <= 2 {
+                oldIndeX = currentIndeX + 2
+            }
+        }else if ((oldOffsetX - currentOffsetX ) / CscreenW == 3 ) {
+            oldOffsetX = currentOffsetX
+            currentIndeX = Int(oldOffsetX/CscreenW)
+            if currentIndeX <= 2 {
+                oldIndeX = currentIndeX + 3
+            }
+         print("原来\(oldIndeX),现在\(currentIndeX)")
         }
        //左滑动，当每滑动一页时设置当前下标和原来小标
-       if ((currentOffsetX - oldOffsetX) / CscreenW == 1 )||((currentOffsetX - oldOffsetX) / CscreenW == 2 )||((currentOffsetX - oldOffsetX) / CscreenW == 3 ) {
+        if ((currentOffsetX - oldOffsetX) / CscreenW == 1 ){
             oldOffsetX = currentOffsetX
             currentIndeX = Int(currentOffsetX/CscreenW)
-           if currentIndeX >= 1 {
-               oldIndeX = currentIndeX - 1
-           }
-    
-       }
+            if currentIndeX >= 1 {
+                oldIndeX = currentIndeX - 1
+            }
+        }else if ((currentOffsetX - oldOffsetX) / CscreenW == 2 ){
+            oldOffsetX = currentOffsetX
+            currentIndeX = Int(currentOffsetX/CscreenW)
+            if currentIndeX >= 1 {
+                oldIndeX = currentIndeX - 2
+            }
+
+        }else if ((currentOffsetX - oldOffsetX) / CscreenW == 3 ){
+            oldOffsetX = currentOffsetX
+            currentIndeX = Int(currentOffsetX/CscreenW)
+            if currentIndeX >= 1 {
+                oldIndeX = currentIndeX - 3
+            }
+             print("原来\(oldIndeX),现在\(currentIndeX)")
+        }
+       
     
       //通知代理
       delegate?.contentView(progress: progress, currentIndex: currentIndeX, oldIndex: oldIndeX)
