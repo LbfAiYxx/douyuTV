@@ -109,69 +109,40 @@ extension PageContentView{
 }
 
 extension PageContentView : UICollectionViewDelegate{
-        //监听滚动
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        oldOffsetX = scrollView.contentOffset.x
+    }
+    //监听滚动
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //动态偏移量
        currentOffsetX = scrollView.contentOffset.x
         
         //设置进度条变量
        var progress :CGFloat = 0
-        
+    
         //左滑动、滚动进度
        if currentOffsetX > oldOffsetX {
-             progress = (currentOffsetX - oldOffsetX)/CscreenW
-            }
-        //右滑动进度条
-       if currentOffsetX < oldOffsetX {
-            progress = 1 - ((currentOffsetX - oldOffsetX)/CscreenW)
+          progress = currentOffsetX/CscreenW - floor(currentOffsetX/CscreenW)
+          oldIndeX = Int(currentOffsetX/CscreenW)
+          if oldIndeX < 3 {
+             currentIndeX = Int(currentOffsetX/CscreenW) + 1
+        }
+          if currentOffsetX - oldOffsetX == CscreenW {
+            progress = 1
+            currentIndeX = oldIndeX
         }
         
-        //右滑动，当每滑动一页时设置当前下标和原来小标
-        if (( oldOffsetX - currentOffsetX) / CscreenW == 1 ) {
-            oldOffsetX = currentOffsetX
-            currentIndeX = Int(oldOffsetX/CscreenW)
-            if currentIndeX <= 2 {
-                oldIndeX = currentIndeX + 1
-            }
-        }else if ((oldOffsetX - currentOffsetX) / CscreenW == 2 ) {
-            oldOffsetX = currentOffsetX
-            currentIndeX = Int(oldOffsetX/CscreenW)
-            if currentIndeX <= 2 {
-                oldIndeX = currentIndeX + 2
-            }
-        }else if ((oldOffsetX - currentOffsetX ) / CscreenW == 3 ) {
-            oldOffsetX = currentOffsetX
-            currentIndeX = Int(oldOffsetX/CscreenW)
-            if currentIndeX <= 2 {
-                oldIndeX = currentIndeX + 3
-            }
-         print("原来\(oldIndeX),现在\(currentIndeX)")
         }
-       //左滑动，当每滑动一页时设置当前下标和原来小标
-        if ((currentOffsetX - oldOffsetX) / CscreenW == 1 ){
-            oldOffsetX = currentOffsetX
-            currentIndeX = Int(currentOffsetX/CscreenW)
-            if currentIndeX >= 1 {
-                oldIndeX = currentIndeX - 1
-            }
-        }else if ((currentOffsetX - oldOffsetX) / CscreenW == 2 ){
-            oldOffsetX = currentOffsetX
-            currentIndeX = Int(currentOffsetX/CscreenW)
-            if currentIndeX >= 1 {
-                oldIndeX = currentIndeX - 2
-            }
-
-        }else if ((currentOffsetX - oldOffsetX) / CscreenW == 3 ){
-            oldOffsetX = currentOffsetX
-            currentIndeX = Int(currentOffsetX/CscreenW)
-            if currentIndeX >= 1 {
-                oldIndeX = currentIndeX - 3
-            }
-             print("原来\(oldIndeX),现在\(currentIndeX)")
+        //右滑动、滚动进度
+       if currentOffsetX < oldOffsetX {
+            progress = 1 - (currentOffsetX/CscreenW - floor(currentOffsetX/CscreenW))
+         if oldOffsetX - currentOffsetX == CscreenW {
+            progress = 1
         }
-       
-    
-      //通知代理
+            currentIndeX = Int(currentOffsetX/CscreenW)
+            oldIndeX = Int(currentOffsetX/CscreenW) + 1
+        }
+       //通知代理
       delegate?.contentView(progress: progress, currentIndex: currentIndeX, oldIndex: oldIndeX)
     }
     

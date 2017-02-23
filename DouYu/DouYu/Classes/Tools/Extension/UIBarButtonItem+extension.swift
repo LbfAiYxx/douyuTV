@@ -29,5 +29,6 @@ extension UIBarButtonItem{
         }
         //初始化UIBarButtonItem
         self.init(customView:btn)
+        
     }
 }

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CollectionNormalViewCell" customModule="DouYu" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="207" height="250"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="207" height="250"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_live_cate_normal" translatesAutoresizingMaskIntoConstraints="NO" id="Src-CT-8ED">
+                        <rect key="frame" x="0.0" y="226" width="14" height="14"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="斗鱼TV" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAR-gT-EUJ">
+                        <rect key="frame" x="24" y="226.5" width="37" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="live_cell_default_phone" translatesAutoresizingMaskIntoConstraints="NO" id="ybe-Mo-aPR">
+                        <rect key="frame" x="0.0" y="0.0" width="207" height="216"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="斗鱼TV" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7D-md-mdv">
+                        <rect key="frame" x="10" y="192.5" width="37" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQo-zJ-b7r">
+                        <rect key="frame" x="158" y="191" width="39" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <state key="normal" title="斗鱼" image="Image_online"/>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="kAR-gT-EUJ" firstAttribute="leading" secondItem="Src-CT-8ED" secondAttribute="trailing" constant="10" id="14s-xe-rZ0"/>
+                <constraint firstAttribute="trailing" secondItem="PQo-zJ-b7r" secondAttribute="trailing" constant="10" id="DgK-cS-QmN"/>
+                <constraint firstAttribute="bottom" secondItem="Src-CT-8ED" secondAttribute="bottom" constant="10" id="NT9-Ui-siP"/>
+                <constraint firstAttribute="trailing" secondItem="ybe-Mo-aPR" secondAttribute="trailing" id="Td2-Bi-YGF"/>
+                <constraint firstAttribute="bottom" secondItem="kAR-gT-EUJ" secondAttribute="bottom" constant="10" id="XUv-dh-f7I"/>
+                <constraint firstItem="Src-CT-8ED" firstAttribute="top" secondItem="ybe-Mo-aPR" secondAttribute="bottom" constant="10" id="bfs-R4-sbY"/>
+                <constraint firstItem="Src-CT-8ED" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="cXY-pL-hll"/>
+                <constraint firstItem="ybe-Mo-aPR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="f3B-iq-fS4"/>
+                <constraint firstItem="n7D-md-mdv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="pCx-Kg-NHo"/>
+                <constraint firstItem="PQo-zJ-b7r" firstAttribute="centerY" secondItem="n7D-md-mdv" secondAttribute="centerY" id="tIw-4g-0ZL"/>
+                <constraint firstItem="ybe-Mo-aPR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="vpZ-uB-hrp"/>
+                <constraint firstItem="Src-CT-8ED" firstAttribute="top" secondItem="n7D-md-mdv" secondAttribute="bottom" constant="20" id="yYb-1g-X9z"/>
+            </constraints>
+            <size key="customSize" width="267" height="205"/>
+            <connections>
+                <outlet property="icon" destination="ybe-Mo-aPR" id="ukt-t9-evf"/>
+                <outlet property="name" destination="kAR-gT-EUJ" id="vqE-g7-Lew"/>
+                <outlet property="online" destination="PQo-zJ-b7r" id="oIl-hY-ffy"/>
+                <outlet property="room" destination="n7D-md-mdv" id="q8i-Cu-Z4f"/>
+            </connections>
+            <point key="canvasLocation" x="-31.5" y="20.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Image_online" width="16" height="16"/>
+        <image name="home_live_cate_normal" width="14" height="14"/>
+        <image name="live_cell_default_phone" width="103" height="103"/>
+    </resources>
+</document>

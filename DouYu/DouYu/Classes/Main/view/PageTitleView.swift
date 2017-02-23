@@ -21,6 +21,8 @@ class PageTitleView: UIView {
     fileprivate var  titles : [String]
     fileprivate var  oldIndex = 0
     fileprivate var  btnLine :UIView?
+    fileprivate var  grayColor : (CGFloat,CGFloat,CGFloat) = (85,85,85)
+    fileprivate var orangeColor : (CGFloat,CGFloat,CGFloat) = (255,128,0)
     //设置代理属性(设置代理最好用weak 而且是可选)
     weak var delegate : titleViewDelegate?
     //懒加载属性
@@ -106,13 +108,13 @@ extension PageTitleView{
         label.textColor = UIColor.orange
         btnLine.backgroundColor = UIColor.orange
         //设置第一个下划线大小
-        btnLine.frame = CGRect.init(x: label.frame.origin.x, y: label.frame.height - CGFloat(CbtnLine), width:label.frame.width, height:CGFloat (CbtnLine))
+        btnLine.frame = CGRect.init(x: label.frame.origin.x, y: frame.height - CGFloat(CbtnLine), width:label.frame.width, height:CGFloat (CbtnLine))
         scrollview.addSubview(btnLine)
    }
     
     private func setUpTitleViewLine(){
         let titleViewLine = UIView()
-        titleViewLine.frame = CGRect.init(x: frame.origin.x, y: frame.height - 1.0, width: frame.width, height: 1.0)
+        titleViewLine.frame = CGRect.init(x: frame.origin.x, y: frame.height - 0.5, width: frame.width, height: 0.5)
         titleViewLine.backgroundColor = UIColor.lightGray
         addSubview(titleViewLine)
         
@@ -125,8 +127,10 @@ extension PageTitleView{
     @objc fileprivate func changeClick(tap: UITapGestureRecognizer){
         //拿到当前标签
         guard let currentLabel = tap.view as? UILabel else{return}
+        
         //之前标签
         let oldLabel = labels[oldIndex]
+       
         //改变标签颜色
         oldLabel.textColor = UIColor.gray
         currentLabel.textColor = UIColor.orange
@@ -147,17 +151,24 @@ extension PageTitleView{
 
 extension PageTitleView{
     func  changeIndex(progress: CGFloat,currentIndex: Int, oldIndex: Int){
-        //改变文字颜色
+        //拿到标签
         let oldLabel = labels[oldIndex]
-        oldLabel.textColor = UIColor.gray
         
         let currentLabel = labels[currentIndex]
-        currentLabel.textColor = UIColor.orange
         
         //改变下划线位置
         let moveX = currentLabel.frame.origin.x - oldLabel.frame.origin.x
-        btnLine?.frame.origin.x = moveX + oldLabel.frame.origin.x
+        btnLine?.frame.origin.x = moveX * progress + oldLabel.frame.origin.x
         
+        //渐变文字颜色
+        //1.变化范围
+        let colorArea = (orangeColor.0 - grayColor.0,orangeColor.1 - grayColor.1,orangeColor.2 - grayColor.2)
+        //原来颜色
+        oldLabel.textColor = UIColor.init(a: orangeColor.0 - colorArea.0 * progress
+            , b: orangeColor.1 - colorArea.1 * progress
+            , c: orangeColor.2 - colorArea.2 * progress)
+        //当前颜色
+        currentLabel.textColor = UIColor.init(a: grayColor.0 + colorArea.0 * progress, b: grayColor.1 + colorArea.1 * progress, c: grayColor.2 + colorArea.2 * progress)
         
     }
 }

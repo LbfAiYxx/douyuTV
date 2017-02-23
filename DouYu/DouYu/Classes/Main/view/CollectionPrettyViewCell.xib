@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CollectionPrettyViewCell" customModule="DouYu" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="229" height="212"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="229" height="212"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQy-VC-zip">
+                        <rect key="frame" x="0.0" y="188" width="46" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="dk5-ED-qRk"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <state key="normal" title="成都市" image="ico_location">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="斗鱼TV" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNt-mA-SiP">
+                        <rect key="frame" x="0.0" y="161" width="47" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="lBl-rk-E3a"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="live_cell_default_phone" translatesAutoresizingMaskIntoConstraints="NO" id="1BM-Sc-B4y">
+                        <rect key="frame" x="0.0" y="0.0" width="229" height="156"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DuW-el-uqR">
+                        <rect key="frame" x="161" y="8" width="60" height="26"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <state key="normal" title="斗鱼TV在线">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="1BM-Sc-B4y" secondAttribute="trailing" id="92q-mW-7By"/>
+                <constraint firstItem="DuW-el-uqR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="9Rs-a2-gMc"/>
+                <constraint firstAttribute="trailing" secondItem="DuW-el-uqR" secondAttribute="trailing" constant="8" id="CY1-Gq-cBS"/>
+                <constraint firstAttribute="bottom" secondItem="SQy-VC-zip" secondAttribute="bottom" constant="10" id="Mfj-PF-ssq"/>
+                <constraint firstItem="kNt-mA-SiP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="SnE-AK-kQN"/>
+                <constraint firstItem="SQy-VC-zip" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Xhc-cU-7kW"/>
+                <constraint firstItem="SQy-VC-zip" firstAttribute="top" secondItem="kNt-mA-SiP" secondAttribute="bottom" constant="10" id="Z99-Fy-yGh"/>
+                <constraint firstItem="1BM-Sc-B4y" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="jGf-LS-kMi"/>
+                <constraint firstItem="kNt-mA-SiP" firstAttribute="top" secondItem="1BM-Sc-B4y" secondAttribute="bottom" constant="5" id="kVc-5r-2hJ"/>
+                <constraint firstItem="1BM-Sc-B4y" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="s7s-gz-XI6"/>
+            </constraints>
+            <size key="customSize" width="229" height="212"/>
+            <connections>
+                <outlet property="city" destination="SQy-VC-zip" id="wgQ-3Y-uRY"/>
+                <outlet property="icon" destination="1BM-Sc-B4y" id="v8l-4F-Rh5"/>
+                <outlet property="name" destination="kNt-mA-SiP" id="Qqa-zK-oTB"/>
+                <outlet property="online" destination="DuW-el-uqR" id="dUM-h3-GkI"/>
+            </connections>
+            <point key="canvasLocation" x="-29.5" y="9"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ico_location" width="12" height="12"/>
+        <image name="live_cell_default_phone" width="103" height="103"/>
+    </resources>
+</document>
